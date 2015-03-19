@@ -18,13 +18,13 @@ module.exports = yeoman.generators.Base.extend({
 
     var prompts = [{
       type: 'confirm',
-      name: 'someOption',
-      message: 'Would you like to enable this option?',
-      default: true
+      name: 'installLaravel',
+      message: 'Would you like to install Laravel 5?',
+      default: false
     }];
 
     this.prompt(prompts, function (props) {
-      this.someOption = props.someOption;
+      this.installLaravel = props.installLaravel;
 
       done();
     }.bind(this));
@@ -50,6 +50,10 @@ module.exports = yeoman.generators.Base.extend({
       this.fs.copy(
         this.templatePath('jshintrc'),
         this.destinationPath('.jshintrc')
+      );
+      this.fs.copy(
+        this.templatePath('bowerrc'),
+        this.destinationPath('.bowerrc')
       );
     }
   },
